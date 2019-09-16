@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web Scraper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <style>
+      .container {
+        max-width: 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-1">
+          <h1>Web Scraper</h1>
+          {% if results %}
+            <ul>
+              <li>
+                <h2>Primary Article List</h2>
+                <h3>(attitude: large value indicates positive attitude)</h3>
+                <h3>(production score: large score indicates more words related with production)</h3>
+              </li>
+            </ul>
+            <br>
+            <div id="results">
+              {% for result in results %}
+              <table class="table table-striped" style="max-width: 3000px;">
+                <thead>
+                  <tr>
+                    <th>Article</th>
+                    <th>Link</th>
+                    <th>Attitude</th>
+                    <th>Production-Score</th>
+                    <th>word 1</th>
+                    <th>word 2</th>
+                    <th>word 3</th>
+                  </tr>
+                </thead>
+                  <tr>
+                    <td>{{ result[0] }}</td>
+                    <td><a href="{{ result[1] }}">{{ result[1] }}</a></td>
+                    <td>{{ result[2] }}</td>
+                    <td>{{ result[4] }}</td>
+                    <td>{{ result[3][0][0] }}<br>{{ result[3][0][1] }}</td>
+                    <td>{{ result[3][1][0] }}<br>{{ result[3][1][1] }}</td>
+                    <td>{{ result[3][2][0] }}<br>{{ result[3][2][1] }}</td>
+                  </tr>
+              </table>
+              <table class="table table-striped" style="max-width: 3000px;">
+                <thead>
+                  <tr>
+                    <th>word 4</th>
+                    <th>word 5</th>
+                    <th>word 6</th>
+                    <th>word 7</th>
+                    <th>word 8</th>
+                    <th>word 9</th>
+                    <th>word 10</th>
+                  </tr>
+                </thead>
+                  <tr>
+                    <td>{{ result[3][3][0] }}<br>{{ result[3][3][1] }}</td>
+                    <td>{{ result[3][4][0] }}<br>{{ result[3][4][1] }}</td>
+                    <td>{{ result[3][5][0] }}<br>{{ result[3][5][1] }}</td>
+                    <td>{{ result[3][6][0] }}<br>{{ result[3][6][1] }}</td>
+                    <td>{{ result[3][7][0] }}<br>{{ result[3][7][1] }}</td>
+                    <td>{{ result[3][8][0] }}<br>{{ result[3][8][1] }}</td>
+                    <td>{{ result[3][9][0] }}<br>{{ result[3][9][1] }}</td>
+                  </tr>
+              </table>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

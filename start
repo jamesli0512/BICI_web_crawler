@@ -1,0 +1,15 @@
+flask-by-example
+source env/bin/activate
+new
+ssh -i ~/.ssh/Huashu_Li_Key_Pair_North_CA.pem ec2-user@54.183.198.124
+sudo service postgresql start
+sudo su - postgres
+psql -U postgres
+scp -i ~/.ssh/Huashu_Li_Key_Pair_North_CA.pem /Users/Greatjian/flask-by-example/new/crawlweb/threeders.py ec2-user@ec2-54-183-198-124.us-west-1.compute.amazonaws.com:~
+mv threeders.py crawlweb
+
+psql
+\c project
+select * from results order by id DESC limit 3;
+
+delete from results;
